@@ -246,13 +246,20 @@ export default function ContainerManager({
                         className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
                         style={{ backgroundColor: container.color || '#FCA311' }}
                       >
-                        {container.icon === 'box' ? (
-                          <Box className="w-6 h-6 text-white" />
-                        ) : container.icon === 'package' ? (
-                          <Package2 className="w-6 h-6 text-white" />
-                        ) : (
-                          <span>{containerIcons.find(i => i.id === container.icon)?.icon || '📦'}</span>
-                        )}
+                        {(() => {
+                          if (container.icon === 'box') {
+                            return <Box className="w-6 h-6 text-white" />
+                          } else if (container.icon === 'package') {
+                            return <Package2 className="w-6 h-6 text-white" />
+                          } else {
+                            const foundIcon = containerIcons.find(i => i.id === container.icon)
+                            const iconValue = foundIcon?.icon
+                            if (typeof iconValue === 'string') {
+                              return <span>{iconValue}</span>
+                            }
+                            return <span>📦</span>
+                          }
+                        })()}
                       </div>
                       <div className="flex gap-1">
                         <button

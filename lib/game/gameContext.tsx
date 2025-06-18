@@ -34,6 +34,9 @@ interface Achievement {
   description: string
   icon: string
   xpReward: number
+  xp_reward?: number
+  requirement_type?: string
+  requirement_value?: number
   unlockedAt?: Date
 }
 
@@ -504,16 +507,18 @@ export function GameProvider({ children }: { children: ReactNode }) {
 
         let shouldUnlock = false
 
-        switch (achievement.requirement_type) {
-          case 'decisions':
-            shouldUnlock = state.userStats.totalDecisions >= achievement.requirement_value
-            break
-          case 'streak':
-            shouldUnlock = state.userStats.longestStreak >= achievement.requirement_value
-            break
-          case 'xp':
-            shouldUnlock = state.userStats.totalXP >= achievement.requirement_value
-            break
+        if (achievement.requirement_type && achievement.requirement_value !== undefined) {
+          switch (achievement.requirement_type) {
+            case 'decisions':
+              shouldUnlock = state.userStats.totalDecisions >= achievement.requirement_value
+              break
+            case 'streak':
+              shouldUnlock = state.userStats.longestStreak >= achievement.requirement_value
+              break
+            case 'xp':
+              shouldUnlock = state.userStats.totalXP >= achievement.requirement_value
+              break
+          }
         }
 
         if (shouldUnlock) {

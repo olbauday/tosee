@@ -121,7 +121,7 @@ async function checkAchievements(userId: string, supabase: any) {
     .select('achievement_id')
     .eq('user_id', userId)
 
-  const unlockedIds = userAchievements?.map(ua => ua.achievement_id) || []
+  const unlockedIds = userAchievements?.map((ua: any) => ua.achievement_id) || []
 
   // Check each achievement
   for (const achievement of achievements || []) {
