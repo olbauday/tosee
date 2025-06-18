@@ -250,24 +250,24 @@ export default function DashboardClient({ user, inventories }: DashboardClientPr
         ) : (
           <>
             {!showNewInventory && !showJoinInventory && (
-              <div className="flex justify-between items-center mb-8">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                 <div>
                   <h2 className="text-xl font-semibold text-gray-900">Your Inventories</h2>
-                  <p className="text-gray-600 mt-1">Click on any inventory to manage items</p>
+                  <p className="text-gray-600 mt-1 text-sm sm:text-base">Click on any inventory to manage items</p>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                   <button
                     onClick={() => setShowJoinInventory(true)}
-                    className="inline-flex items-center bg-white border-2 border-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-300 hover:shadow transition-all duration-200"
+                    className="inline-flex items-center justify-center bg-white border-2 border-gray-200 text-gray-700 px-4 sm:px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-300 hover:shadow transition-all duration-200 text-sm sm:text-base w-full sm:w-auto"
                   >
-                    <Users className="w-5 h-5 mr-2" />
+                    <Users className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
                     Join with Code
                   </button>
                   <button
                     onClick={() => setShowNewInventory(true)}
-                    className="inline-flex items-center bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+                    className="inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 px-4 sm:px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:scale-[1.02] transition-all duration-200 text-sm sm:text-base w-full sm:w-auto"
                   >
-                    <Plus className="w-5 h-5 mr-2" />
+                    <Plus className="w-4 sm:w-5 h-4 sm:h-5 mr-2" />
                     New Inventory
                   </button>
                 </div>

@@ -104,20 +104,16 @@ export default function HomePage() {
               <Package2 className="w-8 h-8 lg:w-10 lg:h-10 text-amber-500 mr-3" />
               <span className="text-xl lg:text-2xl font-bold text-gray-900">Tosslee</span>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
               {isAuthenticated ? (
                 <>
                   <Link 
                     href="/dashboard"
-                    className="text-gray-600 hover:text-gray-900 transition font-medium"
+                    className="bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all text-sm sm:text-base"
                   >
-                    My Dashboard
-                  </Link>
-                  <Link 
-                    href="/dashboard"
-                    className="bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 px-4 py-2 rounded-xl font-semibold hover:shadow-lg transition-all"
-                  >
-                    Go to App →
+                    <span className="hidden sm:inline">Go to App</span>
+                    <span className="sm:hidden">Dashboard</span>
+                    <span className="hidden sm:inline ml-1">→</span>
                   </Link>
                 </>
               ) : (
