@@ -375,57 +375,57 @@ export default function PhotoUpload({
                     className="w-20 h-20 lg:w-24 lg:h-24 object-cover rounded"
                   />
                   
-                  <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input
-                      type="text"
-                      value={item.name}
-                      onChange={(e) => updateItem(item.id, { name: e.target.value })}
-                      placeholder="Item name (optional)"
-                      className="px-3 py-2 border border-gray-300 rounded-md text-sm"
-                      disabled={item.uploading || item.uploaded}
-                    />
-                    
-                    <select
-                      value={item.location}
-                      onChange={(e) => updateItem(item.id, { location: e.target.value })}
-                      className="px-3 py-2 border border-gray-300 rounded-md text-sm"
-                      disabled={item.uploading || item.uploaded}
-                    >
-                      <option value="">No location</option>
-                      {locations.map(loc => (
-                        <option key={loc.id} value={loc.name}>{loc.name}</option>
-                      ))}
-                    </select>
-
-                    <div className="col-span-2">
-                      <div className="flex flex-wrap gap-1">
-                        {tags.map(tag => (
-                          <button
-                            key={tag.id}
-                            onClick={() => {
-                              const currentTags = item.tags.includes(tag.name)
-                                ? item.tags.filter(t => t !== tag.name)
-                                : [...item.tags, tag.name]
-                              updateItem(item.id, { tags: currentTags })
-                            }}
-                            disabled={item.uploading || item.uploaded}
-                            className={`px-2 py-1 rounded-full text-xs transition ${
-                              item.tags.includes(tag.name)
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                            } ${(item.uploading || item.uploaded) ? 'opacity-50 cursor-not-allowed' : ''}`}
-                          >
-                            {tag.name}
-                          </button>
+                  <div className="flex-1 space-y-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        value={item.name}
+                        onChange={(e) => updateItem(item.id, { name: e.target.value })}
+                        placeholder="Item name (optional)"
+                        className="px-3 py-2 border border-gray-300 rounded-md text-sm w-full"
+                        disabled={item.uploading || item.uploaded}
+                      />
+                      
+                      <select
+                        value={item.location}
+                        onChange={(e) => updateItem(item.id, { location: e.target.value })}
+                        className="px-3 py-2 border border-gray-300 rounded-md text-sm w-full"
+                        disabled={item.uploading || item.uploaded}
+                      >
+                        <option value="">No location</option>
+                        {locations.map(loc => (
+                          <option key={loc.id} value={loc.name}>{loc.name}</option>
                         ))}
-                      </div>
+                      </select>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1">
+                      {tags.map(tag => (
+                        <button
+                          key={tag.id}
+                          onClick={() => {
+                            const currentTags = item.tags.includes(tag.name)
+                              ? item.tags.filter(t => t !== tag.name)
+                              : [...item.tags, tag.name]
+                            updateItem(item.id, { tags: currentTags })
+                          }}
+                          disabled={item.uploading || item.uploaded}
+                          className={`px-2 py-1 rounded-full text-xs transition ${
+                            item.tags.includes(tag.name)
+                              ? 'bg-blue-600 text-white'
+                              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                          } ${(item.uploading || item.uploaded) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        >
+                          {tag.name}
+                        </button>
+                      ))}
                     </div>
 
                     <textarea
                       value={item.notes}
                       onChange={(e) => updateItem(item.id, { notes: e.target.value })}
                       placeholder="Notes (optional)"
-                      className="col-span-2 px-3 py-2 border border-gray-300 rounded-md text-sm"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
                       rows={2}
                       disabled={item.uploading || item.uploaded}
                     />
