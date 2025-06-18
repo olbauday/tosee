@@ -212,7 +212,7 @@ export default function SwipeMode({ items, inventoryId, gameMode, onComplete }: 
       </div>
 
       {/* Card stack */}
-      <div className="absolute inset-0 flex items-center justify-center p-8">
+      <div className="absolute inset-0 flex items-center justify-center p-8 pt-48">
         <AnimatePresence>
           {currentItem && (
             <motion.div
@@ -231,7 +231,7 @@ export default function SwipeMode({ items, inventoryId, gameMode, onComplete }: 
             >
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
                 {/* Item image */}
-                <div className="relative h-96 bg-gray-100">
+                <div className="relative h-80 sm:h-96 bg-gray-100">
                   {currentItem.image_url ? (
                     <>
                       {console.log('Trying to load image:', currentItem.image_url)}
@@ -375,8 +375,8 @@ export default function SwipeMode({ items, inventoryId, gameMode, onComplete }: 
       </div>
 
       {/* Hint text */}
-      <div className="absolute bottom-8 left-0 right-0 text-center">
-        <p className="text-gray-500 text-sm">
+      <div className="absolute bottom-4 left-0 right-0 text-center z-10">
+        <p className="text-gray-500 text-sm bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mx-auto inline-block">
           Swipe or tap to decide • Quick decisions earn bonus XP!
         </p>
       </div>
